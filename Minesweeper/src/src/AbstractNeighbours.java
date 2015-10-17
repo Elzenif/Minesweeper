@@ -1,13 +1,24 @@
 package src;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public abstract class AbstractNeighbours {
 
-	protected Cell cell;
-	protected List<Cell> neighbours;
+	protected AbstractCell cell;
+	protected List<AbstractCell> neighbours;
 	
-	protected AbstractNeighbours(Cell cell) {
-		this.cell = cell;
+	public abstract AbstractCell getCell();
+
+	public abstract List<AbstractCell> getNeighbours();
+
+	protected abstract void setCell(AbstractCell cell);
+
+	protected void setNeighbours() {
+		neighbours = new LinkedList<AbstractCell>();
+	}
+
+	protected AbstractNeighbours() {
+		setNeighbours();
 	}
 }
