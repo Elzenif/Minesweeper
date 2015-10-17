@@ -2,10 +2,10 @@ package src;
 
 import java.util.LinkedList;
 
-public class SquareNeighbours extends AbstractNeighbours {
+public class RectangleNeighbours extends AbstractNeighbours {
 
 	// index = line * width + row
-		public SquareNeighbours(Cell cell) {
+		public RectangleNeighbours(Cell cell) {
 		super(cell);
 		neighbours = new LinkedList<Cell>();
 		

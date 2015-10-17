@@ -33,10 +33,10 @@ public class Cell {
 	private void setNeighbours() {
 		switch (board.getBoardShape()) {
 			case RECTANGULAR:
-				neighbours = new SquareNeighbours(this);
+				neighbours = new RectangleNeighbours(this);
 				break;
 			default:
-				neighbours = new SquareNeighbours(this);
+				neighbours = new RectangleNeighbours(this);
 				break;
 		}
 	}
