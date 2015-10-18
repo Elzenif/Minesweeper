@@ -1,6 +1,6 @@
 package src;
 
-public class RectangleBoard extends AbstractBoard implements IndexConverter {
+public class RectangularBoard extends AbstractBoard implements IndexConverterRectangular {
 
 	private int height;
 	private int width;
@@ -25,7 +25,7 @@ public class RectangleBoard extends AbstractBoard implements IndexConverter {
 		this.width = width;
 	}
 
-	public RectangleBoard(int heigth, int width) {
+	public RectangularBoard(int heigth, int width) {
 		super(BoardShape.RECTANGULAR, heigth * width);
 		try {
 			setHeight(heigth);
@@ -36,7 +36,7 @@ public class RectangleBoard extends AbstractBoard implements IndexConverter {
 	}
 	
 	@Override
-	public RectangleCell getCell(int index) {
+	public RectangularCell getCell(int index) {
 		return getCell(index);
 	}
 }

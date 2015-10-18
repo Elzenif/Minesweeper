@@ -1,6 +1,6 @@
 package src;
 
-public class RectangleCell extends AbstractCell implements IndexConverter {
+public class RectangularCell extends AbstractCell implements IndexConverterRectangular {
 
 	private int line;
 	private int row;
@@ -13,12 +13,12 @@ public class RectangleCell extends AbstractCell implements IndexConverter {
 		return row;
 	}
 
-	public RectangleBoard getBoard() {
-		return (RectangleBoard) board;
+	public RectangularBoard getBoard() {
+		return (RectangularBoard) board;
 	}
 	
-	public RectangleNeighbours getNeighbours() {
-		return (RectangleNeighbours) neighbours;
+	public RectangularNeighbours getNeighbours() {
+		return (RectangularNeighbours) neighbours;
 	}
 
 	private void setLine(int index) {
@@ -34,10 +34,10 @@ public class RectangleCell extends AbstractCell implements IndexConverter {
 	}
 	
 	protected void setNeighbours() {
-		neighbours = new RectangleNeighbours(this);
+		neighbours = new RectangularNeighbours(this);
 	}
 	
-	public RectangleCell(RectangleBoard board, int index) {
+	public RectangularCell(RectangularBoard board, int index) {
 		super(index);
 		setBoard(board);
 		setLine(index);
