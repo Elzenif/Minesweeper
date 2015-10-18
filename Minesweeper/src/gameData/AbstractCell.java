@@ -1,10 +1,11 @@
-package src;
+package gameData;
 
 public abstract class AbstractCell {
 
 	protected int index;
 	protected AbstractBoard board;
 	protected AbstractNeighbours neighbours;
+	protected boolean hasMine;
 
 	public int getIndex() {
 		return index;
@@ -14,6 +15,10 @@ public abstract class AbstractCell {
 	
 	public abstract AbstractNeighbours getNeighbours();
 
+	public boolean getHasMine() {
+		return hasMine;
+	}
+	
 	private void setIndex(int index) throws Exception {
 		if (index < 0)
 			throw new Exception("index too small : " + index);
@@ -25,9 +30,14 @@ public abstract class AbstractCell {
 	protected abstract void setBoard(AbstractBoard board);
 	
 	protected abstract void setNeighbours();
+	
+	protected void setHasMine(boolean mine) {
+		this.hasMine = mine;
+	}
 
-	public AbstractCell(int index) {
+	public AbstractCell(AbstractBoard board, int index) {
 		try {
+			setBoard(board);
 			setIndex(index);
 		} catch (Exception e) {
 			e.printStackTrace();

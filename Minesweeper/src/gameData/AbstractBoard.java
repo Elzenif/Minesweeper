@@ -1,4 +1,4 @@
-package src;
+package gameData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,4 +49,5 @@ public abstract class AbstractBoard {
 		return cells.get(index);
 	}
 	
+	protected abstract void fillMines();
 }

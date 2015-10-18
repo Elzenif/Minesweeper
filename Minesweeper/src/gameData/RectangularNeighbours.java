@@ -1,4 +1,4 @@
-package src;
+package gameData;
 
 import java.util.List;
 
@@ -16,6 +16,7 @@ public class RectangularNeighbours extends AbstractNeighbours implements IndexCo
 		this.cell = cell;
 	}
 	
+	@Override
 	protected void setNeighbours() {
 		int indexTop = convertLineAndRowInIndex(
 				getCell().getLine() - 1,

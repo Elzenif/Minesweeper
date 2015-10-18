@@ -1,4 +1,4 @@
-package src;
+package gameData;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -19,6 +19,6 @@ public abstract class AbstractNeighbours {
 	}
 
 	protected AbstractNeighbours() {
-		setNeighbours();
+		this.setNeighbours();
 	}
 }

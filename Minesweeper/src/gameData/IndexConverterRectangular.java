@@ -1,4 +1,4 @@
-package src;
+package gameData;
 
 public interface IndexConverterRectangular {
 

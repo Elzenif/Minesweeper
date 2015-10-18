@@ -1,4 +1,4 @@
-package src;
+package gameData;
 
 public class RectangularCell extends AbstractCell implements IndexConverterRectangular {
 
@@ -33,16 +33,14 @@ public class RectangularCell extends AbstractCell implements IndexConverterRecta
 		this.board = board;
 	}
 	
-	protected void setNeighbours() {
+	public void setNeighbours() {
 		neighbours = new RectangularNeighbours(this);
 	}
 	
 	public RectangularCell(RectangularBoard board, int index) {
-		super(index);
-		setBoard(board);
+		super(board, index);
 		setLine(index);
 		setRow(index);
-		setNeighbours();
 	}
 
 }
