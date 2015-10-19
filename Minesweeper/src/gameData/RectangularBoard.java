@@ -1,7 +1,5 @@
 package gameData;
 
-import java.util.ArrayList;
-
 public class RectangularBoard extends AbstractBoard implements IndexConverterRectangular, Random {
 
 	private int height;
