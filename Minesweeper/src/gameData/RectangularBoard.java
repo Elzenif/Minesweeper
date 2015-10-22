@@ -73,7 +73,6 @@ public class RectangularBoard extends AbstractBoard implements IndexConverterRec
 		double proba = 0;
 		for (int i = length; i >= 1; i--) {
 			proba = (double) nbMinesRemaning / (double) i;
-			System.out.println(proba);
 			if (getRandom(proba)) {
 				nbMinesRemaning--;
 				getCell(i-1).setHasMine(true);

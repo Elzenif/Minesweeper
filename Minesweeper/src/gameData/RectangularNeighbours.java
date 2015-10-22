@@ -17,30 +17,35 @@ public class RectangularNeighbours extends AbstractNeighbours implements IndexCo
 	}
 	
 	private void setRectangularNeighbours() {
-		int indexTop = convertLineAndRowInIndex(
-				getCell().getLine() - 1,
-				getCell().getRow(),
-				getCell().getBoard().getWidth());
-		int indexLeft = convertLineAndRowInIndex(
-				getCell().getLine(),
-				getCell().getRow() - 1 ,
-				getCell().getBoard().getWidth());
-		int indexBottom = convertLineAndRowInIndex(
-				getCell().getLine() + 1,
-				getCell().getRow(),
-				getCell().getBoard().getWidth());
-		int indexRight = convertLineAndRowInIndex(
-				getCell().getLine(),
-				getCell().getRow() + 1,
-				getCell().getBoard().getWidth());
-		if (!isOnTheTop(getCell()))
+		int line = getCell().getLine();
+		int row = getCell().getRow();
+		int width = getCell().getBoard().getWidth();
+		int indexTopLeft = convertLineAndRowInIndex(line - 1, row - 1, width);
+		int indexTop = convertLineAndRowInIndex(line - 1, row, width);
+		int indexTopRight = convertLineAndRowInIndex(line - 1, row + 1, width);
+		int indexLeft = convertLineAndRowInIndex(line, row - 1, width);
+		int indexRight = convertLineAndRowInIndex(line, row + 1, width);
+		int indexBottomLeft = convertLineAndRowInIndex(line + 1, row - 1, width);
+		int indexBottom = convertLineAndRowInIndex(line + 1, row, width);
+		int indexBottomRight = convertLineAndRowInIndex(line + 1, row + 1, width);
+		if (!isOnTheTop(getCell())) {
 			neighbours.add(getCell().getBoard().getCell(indexTop));
+			if (!isOnTheLeft(getCell()))
+				neighbours.add(getCell().getBoard().getCell(indexTopLeft));			
+			if (!isOnTheRight(getCell()))
+				neighbours.add(getCell().getBoard().getCell(indexTopRight));
+		}
 		if (!isOnTheLeft(getCell()))
 			neighbours.add(getCell().getBoard().getCell(indexLeft));
-		if (!isOnTheBottom(getCell()))
-			neighbours.add(getCell().getBoard().getCell(indexBottom));
 		if (!isOnTheRight(getCell()))
 			neighbours.add(getCell().getBoard().getCell(indexRight));
+		if (!isOnTheBottom(getCell())) {
+			neighbours.add(getCell().getBoard().getCell(indexBottom));
+			if (!isOnTheLeft(getCell()))
+				neighbours.add(getCell().getBoard().getCell(indexBottomLeft));
+			if (!isOnTheRight(getCell()))
+				neighbours.add(getCell().getBoard().getCell(indexBottomRight));		
+		}
 	}
 
 	public RectangularNeighbours(RectangularCell cell) {
