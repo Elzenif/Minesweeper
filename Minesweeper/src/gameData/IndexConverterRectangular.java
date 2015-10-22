@@ -33,11 +33,11 @@ public interface IndexConverterRectangular {
 	
 	public default boolean isOnTheBottom(RectangularCell cell) {
 		return (convertIndexInLine(cell.getIndex(), cell.getBoard().getWidth())
-				== cell.getBoard().getHeight());
+				== (cell.getBoard().getHeight() - 1));
 	}
 	
 	public default boolean isOnTheRight(RectangularCell cell) {
 		return (convertIndexInRow(cell.getIndex(), cell.getBoard().getWidth())
-				== cell.getBoard().getWidth());
+				== (cell.getBoard().getWidth() - 1));
 	}
 }

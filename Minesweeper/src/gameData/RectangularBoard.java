@@ -71,14 +71,15 @@ public class RectangularBoard extends AbstractBoard implements IndexConverterRec
 	protected void fillMines() {
 		int nbMinesRemaning = nbMines;
 		double proba = 0;
-		for (int i = 0; i < length; i++) {
-			proba = nbMinesRemaning / length;
+		for (int i = length; i >= 1; i--) {
+			proba = (double) nbMinesRemaning / (double) i;
+			System.out.println(proba);
 			if (getRandom(proba)) {
 				nbMinesRemaning--;
-				getCell(i).setHasMine(true);
+				getCell(i-1).setHasMine(true);
 			}
 			else {
-				getCell(i).setHasMine(false);
+				getCell(i-1).setHasMine(false);
 			}
 		}
 	}

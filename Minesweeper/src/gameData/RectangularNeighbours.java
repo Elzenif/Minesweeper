@@ -16,8 +16,7 @@ public class RectangularNeighbours extends AbstractNeighbours implements IndexCo
 		this.cell = cell;
 	}
 	
-	@Override
-	protected void setNeighbours() {
+	private void setRectangularNeighbours() {
 		int indexTop = convertLineAndRowInIndex(
 				getCell().getLine() - 1,
 				getCell().getRow(),
@@ -39,14 +38,15 @@ public class RectangularNeighbours extends AbstractNeighbours implements IndexCo
 		if (!isOnTheLeft(getCell()))
 			neighbours.add(getCell().getBoard().getCell(indexLeft));
 		if (!isOnTheBottom(getCell()))
-			neighbours.add(getCell().getBoard().getCell(indexBottom));	
+			neighbours.add(getCell().getBoard().getCell(indexBottom));
 		if (!isOnTheRight(getCell()))
-			neighbours.add(getCell().getBoard().getCell(indexRight));		
+			neighbours.add(getCell().getBoard().getCell(indexRight));
 	}
 
 	public RectangularNeighbours(RectangularCell cell) {
 		super();
-		setNeighbours();
+		setCell(cell);
+		setRectangularNeighbours();
 	}
 	
 
