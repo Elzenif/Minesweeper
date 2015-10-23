@@ -55,8 +55,8 @@ public class RectangularBoard extends AbstractBoard implements IndexConverterRec
 			setWidth(width);
 			setNbMines(nbMines);
 			setCells();
-			setNeighBours();
 			fillMines();
+			setNeighBours();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

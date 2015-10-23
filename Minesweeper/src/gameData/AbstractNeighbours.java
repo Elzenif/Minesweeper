@@ -21,4 +21,13 @@ public abstract class AbstractNeighbours {
 	protected AbstractNeighbours() {
 		this.setNeighbours();
 	}
+	
+	protected void addNeighbours(boolean condition, int index) {
+		if (condition) {
+			neighbours.add(getCell().getBoard().getCell(index));
+			getCell().incNumberOfNeighbours();
+			if (getCell().getBoard().getCell(index).getHasMine())
+				getCell().incNumberOfNeighboursMines();
+		}
+	}
 }

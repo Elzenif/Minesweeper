@@ -28,24 +28,15 @@ public class RectangularNeighbours extends AbstractNeighbours implements IndexCo
 		int indexBottomLeft = convertLineAndRowInIndex(line + 1, row - 1, width);
 		int indexBottom = convertLineAndRowInIndex(line + 1, row, width);
 		int indexBottomRight = convertLineAndRowInIndex(line + 1, row + 1, width);
-		if (!isOnTheTop(getCell())) {
-			neighbours.add(getCell().getBoard().getCell(indexTop));
-			if (!isOnTheLeft(getCell()))
-				neighbours.add(getCell().getBoard().getCell(indexTopLeft));			
-			if (!isOnTheRight(getCell()))
-				neighbours.add(getCell().getBoard().getCell(indexTopRight));
-		}
-		if (!isOnTheLeft(getCell()))
-			neighbours.add(getCell().getBoard().getCell(indexLeft));
-		if (!isOnTheRight(getCell()))
-			neighbours.add(getCell().getBoard().getCell(indexRight));
-		if (!isOnTheBottom(getCell())) {
-			neighbours.add(getCell().getBoard().getCell(indexBottom));
-			if (!isOnTheLeft(getCell()))
-				neighbours.add(getCell().getBoard().getCell(indexBottomLeft));
-			if (!isOnTheRight(getCell()))
-				neighbours.add(getCell().getBoard().getCell(indexBottomRight));		
-		}
+
+		addNeighbours(!isOnTheLeft(getCell()) && !isOnTheTop(getCell()), indexTopLeft);
+		addNeighbours(!isOnTheTop(getCell()), indexTop);
+		addNeighbours(!isOnTheRight(getCell()) && ! isOnTheTop(getCell()), indexTopRight);
+		addNeighbours(!isOnTheLeft(getCell()), indexLeft);
+		addNeighbours(!isOnTheRight(getCell()), indexRight);
+		addNeighbours(!isOnTheLeft(getCell()) && !isOnTheBottom(getCell()), indexBottomLeft);
+		addNeighbours(!isOnTheBottom(getCell()), indexBottom);
+		addNeighbours(!isOnTheRight(getCell()) && !isOnTheBottom(getCell()), indexBottomRight);
 	}
 
 	public RectangularNeighbours(RectangularCell cell) {
