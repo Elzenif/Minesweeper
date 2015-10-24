@@ -4,22 +4,21 @@ import java.util.List;
 
 public class RectangularNeighbours extends AbstractNeighbours implements IndexConverterRectangular {
 
-	public RectangularCell getCell() {
-		return (RectangularCell) cell;
+	@Override
+	public RectangularSafeCell getSafeCell() {
+		return (RectangularSafeCell) safeCell;
 	}
 	
 	public List<AbstractCell> getNeighbours() {
 		return neighbours;
 	}
 	
-	protected void setCell(AbstractCell cell) {
-		this.cell = cell;
-	}
-	
 	private void setRectangularNeighbours() {
-		int line = getCell().getLine();
-		int row = getCell().getRow();
-		int width = getCell().getBoard().getWidth();
+		RectangularCell cell = getSafeCell().getCell();
+		
+		int line = cell.getLine();
+		int row = cell.getRow();
+		int width = cell.getBoard().getWidth();
 		int indexTopLeft = convertLineAndRowInIndex(line - 1, row - 1, width);
 		int indexTop = convertLineAndRowInIndex(line - 1, row, width);
 		int indexTopRight = convertLineAndRowInIndex(line - 1, row + 1, width);
@@ -29,19 +28,18 @@ public class RectangularNeighbours extends AbstractNeighbours implements IndexCo
 		int indexBottom = convertLineAndRowInIndex(line + 1, row, width);
 		int indexBottomRight = convertLineAndRowInIndex(line + 1, row + 1, width);
 
-		addNeighbours(!isOnTheLeft(getCell()) && !isOnTheTop(getCell()), indexTopLeft);
-		addNeighbours(!isOnTheTop(getCell()), indexTop);
-		addNeighbours(!isOnTheRight(getCell()) && ! isOnTheTop(getCell()), indexTopRight);
-		addNeighbours(!isOnTheLeft(getCell()), indexLeft);
-		addNeighbours(!isOnTheRight(getCell()), indexRight);
-		addNeighbours(!isOnTheLeft(getCell()) && !isOnTheBottom(getCell()), indexBottomLeft);
-		addNeighbours(!isOnTheBottom(getCell()), indexBottom);
-		addNeighbours(!isOnTheRight(getCell()) && !isOnTheBottom(getCell()), indexBottomRight);
+		addNeighbours(!isOnTheLeft(cell) && !isOnTheTop(cell), indexTopLeft);
+		addNeighbours(!isOnTheTop(cell), indexTop);
+		addNeighbours(!isOnTheRight(cell) && ! isOnTheTop(cell), indexTopRight);
+		addNeighbours(!isOnTheLeft(cell), indexLeft);
+		addNeighbours(!isOnTheRight(cell), indexRight);
+		addNeighbours(!isOnTheLeft(cell) && !isOnTheBottom(cell), indexBottomLeft);
+		addNeighbours(!isOnTheBottom(cell), indexBottom);
+		addNeighbours(!isOnTheRight(cell) && !isOnTheBottom(cell), indexBottomRight);
 	}
 
-	public RectangularNeighbours(RectangularCell cell) {
-		super();
-		setCell(cell);
+	public RectangularNeighbours(RectangularSafeCell safeCell) {
+		super(safeCell);
 		setRectangularNeighbours();
 	}
 	

@@ -37,7 +37,7 @@ public abstract class AbstractBoard {
 		this.nbMines = nbMines;
 	}
 	
-	public AbstractBoard(int length, int nbMines) {
+	protected AbstractBoard(int length, int nbMines) {
 		try {
 			setLength(length);
 			setCells();

@@ -16,10 +16,6 @@ public class RectangularCell extends AbstractCell implements IndexConverterRecta
 	public RectangularBoard getBoard() {
 		return (RectangularBoard) board;
 	}
-	
-	public RectangularNeighbours getNeighbours() {
-		return (RectangularNeighbours) neighbours;
-	}
 
 	private void setLine(int index) {
 		this.line = convertIndexInLine(index, getBoard().getWidth());
@@ -33,8 +29,12 @@ public class RectangularCell extends AbstractCell implements IndexConverterRecta
 		this.board = board;
 	}
 	
-	public void setNeighbours() {
-		neighbours = new RectangularNeighbours(this);
+	@Override
+	protected void setCellContent(boolean hasMine) {
+		if (hasMine)
+			cellContent = new RectangularMineCell(this);
+		else
+			cellContent = new RectangularSafeCell(this);
 	}
 	
 	public RectangularCell(RectangularBoard board, int index) {
@@ -42,5 +42,4 @@ public class RectangularCell extends AbstractCell implements IndexConverterRecta
 		setLine(index);
 		setRow(index);
 	}
-
 }

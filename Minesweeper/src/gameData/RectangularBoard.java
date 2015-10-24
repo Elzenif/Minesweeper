@@ -14,13 +14,13 @@ public class RectangularBoard extends AbstractBoard implements IndexConverterRec
 	}
 
 	private void setHeight(int height) throws Exception {
-		if (height <= 2)
+		if (height < 2)
 			throw new Exception("height must be 2 or more : " + height);
 		this.height = height;
 	}
 
 	private void setWidth(int width) throws Exception {
-		if (width <= 2)
+		if (width < 2)
 			throw new Exception("width must be 2 or more : " + width);
 		this.width = width;
 	}
@@ -33,7 +33,7 @@ public class RectangularBoard extends AbstractBoard implements IndexConverterRec
 	
 	private void setNeighBours() {
 		for (int i = 0; i < length; i++) {
-			cells.get(i).setNeighbours();
+			cells.get(i).getCellContent().initializeAnyNeighbour();
 		}	
 	}
 
@@ -63,10 +63,10 @@ public class RectangularBoard extends AbstractBoard implements IndexConverterRec
 			proba = (double) nbMinesRemaning / (double) i;
 			if (getRandom(proba)) {
 				nbMinesRemaning--;
-				getCell(i-1).setHasMine(true);
+				getCell(i-1).setCellContent(true);
 			}
 			else {
-				getCell(i-1).setHasMine(false);
+				getCell(i-1).setCellContent(false);
 			}
 		}
 	}

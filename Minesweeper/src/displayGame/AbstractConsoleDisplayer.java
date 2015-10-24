@@ -10,7 +10,7 @@ public abstract class AbstractConsoleDisplayer {
 		return board;
 	}
 	
-	public AbstractConsoleDisplayer() {
+	protected AbstractConsoleDisplayer() {
 	}
 	
 	public abstract void displayBoard();

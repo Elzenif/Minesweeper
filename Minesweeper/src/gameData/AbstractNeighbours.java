@@ -5,29 +5,32 @@ import java.util.List;
 
 public abstract class AbstractNeighbours {
 
-	protected AbstractCell cell;
+	protected AbstractSafeCell safeCell;
 	protected List<AbstractCell> neighbours;
 	
-	public abstract AbstractCell getCell();
+	public abstract AbstractSafeCell getSafeCell();
 
 	public abstract List<AbstractCell> getNeighbours();
 
-	protected abstract void setCell(AbstractCell cell);
+	protected void setSafeCell(AbstractSafeCell safeCell) {
+		this.safeCell = safeCell;
+	}
 
 	protected void setNeighbours() {
 		neighbours = new ArrayList<AbstractCell>();
 	}
 
-	protected AbstractNeighbours() {
+	protected AbstractNeighbours(AbstractSafeCell safeCell) {
+		setSafeCell(safeCell);
 		this.setNeighbours();
 	}
 	
-	protected void addNeighbours(boolean condition, int index) {
-		if (condition) {
-			neighbours.add(getCell().getBoard().getCell(index));
-			getCell().incNumberOfNeighbours();
-			if (getCell().getBoard().getCell(index).getHasMine())
-				getCell().incNumberOfNeighboursMines();
+	protected void addNeighbours(boolean hasANeighbour, int index) {
+		if (hasANeighbour) {
+			AbstractCell neighbour = getSafeCell().getCell().getBoard().getCell(index);
+			neighbours.add(neighbour);
+			getSafeCell().incNumberOfNeighbours();
+			getSafeCell().incNumberOfNeighboursMines(neighbour.getCellContent().getMineContained());
 		}
 	}
 }
