@@ -1,4 +1,4 @@
-package gameData;
+package displayGame;
 
 public class Game {
 
