@@ -4,8 +4,8 @@ public class Game {
 
 	public static void main(String[] args) {
 
-		PrintBoard printBoard = new PrintBoard();
-		
+		AbstractConsoleDisplayer consoleDisplayer = new RectangularConsoleDisplayer(5, 5, 5);
+		consoleDisplayer.displayBoard();
 	}
 	
 

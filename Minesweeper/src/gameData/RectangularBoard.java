@@ -4,8 +4,7 @@ public class RectangularBoard extends AbstractBoard implements IndexConverterRec
 
 	private int height;
 	private int width;
-	private int nbMines;
-		
+	
 	public int getHeight() {
 		return height;
 	}
@@ -14,10 +13,6 @@ public class RectangularBoard extends AbstractBoard implements IndexConverterRec
 		return width;
 	}
 
-	public int getNbMines() {
-		return nbMines;
-	}
-	
 	private void setHeight(int height) throws Exception {
 		if (height <= 2)
 			throw new Exception("height must be 2 or more : " + height);
@@ -28,12 +23,6 @@ public class RectangularBoard extends AbstractBoard implements IndexConverterRec
 		if (width <= 2)
 			throw new Exception("width must be 2 or more : " + width);
 		this.width = width;
-	}
-	
-	private void setNbMines(int nbMines) throws Exception {
-		if (nbMines > length)
-			throw new Exception("there are more mines than cells : " + nbMines);
-		this.nbMines = nbMines;
 	}
 	
 	private void setCells() {
@@ -49,11 +38,10 @@ public class RectangularBoard extends AbstractBoard implements IndexConverterRec
 	}
 
 	public RectangularBoard(int heigth, int width, int nbMines) {
-		super(BoardShape.RECTANGULAR, heigth * width);
+		super(heigth * width, nbMines);
 		try {
 			setHeight(heigth);
 			setWidth(width);
-			setNbMines(nbMines);
 			setCells();
 			fillMines();
 			setNeighBours();

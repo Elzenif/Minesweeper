@@ -1,6 +1,6 @@
 package gameData;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AbstractNeighbours {
@@ -15,7 +15,7 @@ public abstract class AbstractNeighbours {
 	protected abstract void setCell(AbstractCell cell);
 
 	protected void setNeighbours() {
-		neighbours = new LinkedList<AbstractCell>();
+		neighbours = new ArrayList<AbstractCell>();
 	}
 
 	protected AbstractNeighbours() {
