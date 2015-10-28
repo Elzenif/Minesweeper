@@ -6,7 +6,7 @@ import gameData.RectangularBoard;
 
 public class RectangularConsoleDisplayer extends AbstractConsoleDisplayer 
 	implements IndexConverterRectangular, Random {
-
+	
 	@Override
 	public RectangularBoard getBoard() {
 		return (RectangularBoard) board;
@@ -16,15 +16,7 @@ public class RectangularConsoleDisplayer extends AbstractConsoleDisplayer
 		this.board = new RectangularBoard(height, width, nbMines);
 	}
 	
-	public RectangularConsoleDisplayer(int min, int max) {
-		super();
-		int height = getRandom(min, max);
-		int width = getRandom(min, max);
-		int nbMines = getRandom(1, height * width / 2);
-		setBoard(height, width, nbMines);
-	}
-	
-	public RectangularConsoleDisplayer(int height, int width, int nbMines) {
+	private RectangularConsoleDisplayer(int height, int width, int nbMines) {
 		super();
 		setBoard(height, width, nbMines);
 	}
@@ -39,5 +31,18 @@ public class RectangularConsoleDisplayer extends AbstractConsoleDisplayer
 			System.out.println("");	
 		}
 	}
+	
+	public static RectangularConsoleDisplayer randomRectangularConsoleDisplayer(int min, int max) {
+		int height = Random.getRandom(min, max);
+		int width = Random.getRandom(min, max);
+		int nbMines = Random.getRandom(1, height * width / 2);
+		return new RectangularConsoleDisplayer(height, width, nbMines);
+	}
 
+	public static RectangularConsoleDisplayer standardRectangularConsoleDisplayer(ConsoleReader consoleReader) {
+		int height = consoleReader.readNextInt("Height : ");
+		int width = consoleReader.readNextInt("Width : ");
+		int nbMines  = consoleReader.readNextInt("Number of mines : ");
+		return new RectangularConsoleDisplayer(height, width, nbMines);
+	}
 }

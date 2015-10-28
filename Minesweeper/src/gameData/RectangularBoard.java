@@ -1,6 +1,7 @@
 package gameData;
 
-public class RectangularBoard extends AbstractBoard implements IndexConverterRectangular, Random {
+public class RectangularBoard extends AbstractBoard
+	implements IndexConverterRectangular, Random {
 
 	private int height;
 	private int width;
@@ -61,7 +62,7 @@ public class RectangularBoard extends AbstractBoard implements IndexConverterRec
 		double proba = 0;
 		for (int i = length; i >= 1; i--) {
 			proba = (double) nbMinesRemaning / (double) i;
-			if (getRandom(proba)) {
+			if (Random.getRandom(proba)) {
 				nbMinesRemaning--;
 				getCell(i-1).setCellContent(true);
 			}
