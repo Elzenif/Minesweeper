@@ -1,7 +1,7 @@
 package gameData;
 
 public class RectangularBoard extends AbstractBoard
-	implements IndexConverterRectangular, Random {
+	implements IndexConverterRectangular {
 
 	private int height;
 	private int width;
@@ -55,20 +55,12 @@ public class RectangularBoard extends AbstractBoard
 	public RectangularCell getCell(int index) {
 		return (RectangularCell) getCells().get(index);
 	}
+		
+	public void revealCell(int line, int row) {
+		super.revealCell(convertLineAndRowInIndex(line, row, width));
+	}
 	
-	@Override
-	protected void fillMines() {
-		int nbMinesRemaning = nbMines;
-		double proba = 0;
-		for (int i = length; i >= 1; i--) {
-			proba = (double) nbMinesRemaning / (double) i;
-			if (Random.getRandom(proba)) {
-				nbMinesRemaning--;
-				getCell(i-1).setCellContent(true);
-			}
-			else {
-				getCell(i-1).setCellContent(false);
-			}
-		}
+	public void flagCell(int line, int row) {
+		super.flagCell(convertLineAndRowInIndex(line, row, width));
 	}
 }

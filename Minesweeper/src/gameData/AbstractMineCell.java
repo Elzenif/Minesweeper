@@ -18,6 +18,19 @@ public abstract class AbstractMineCell extends AbstractCellContent {
 	
 	@Override
 	public void print() {
-		System.out.print("X ");
+		switch (cellDisplay) {
+			case NOPE:
+				System.out.print(". ");
+				break;
+			case FLAG:
+				System.out.print("F ");
+				break;
+			case CONTENT:
+				System.out.print("X ");
+				break;
+			default:
+				System.out.print(". ");
+				break;
+		}
 	}
 }

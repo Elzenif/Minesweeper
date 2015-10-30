@@ -11,7 +11,6 @@ public abstract class AbstractCell {
 	}
 
 	public abstract AbstractBoard getBoard();
-	
 
 	public AbstractCellContent getCellContent() {
 		return cellContent;
@@ -38,4 +37,11 @@ public abstract class AbstractCell {
 		}
 	}
 	
+	protected void revealCell() {
+		cellContent.setCellDisplay(CellDisplay.CONTENT);
+	}
+	
+	protected void flagCell() {
+		cellContent.setCellDisplay(CellDisplay.FLAG);
+	}
 }

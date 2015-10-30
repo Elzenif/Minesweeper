@@ -45,6 +45,19 @@ public abstract class AbstractSafeCell extends AbstractCellContent {
 
 	@Override
 	public void print() {
-		System.out.print(getNumberOfNeighboursMines() + " ");
+		switch (cellDisplay) {
+			case NOPE:
+				System.out.print(". ");
+				break;
+			case FLAG:
+				System.out.print("F ");
+				break;
+			case CONTENT:
+				System.out.print(getNumberOfNeighboursMines() + " ");
+				break;
+			default:
+				System.out.print(". ");
+				break;
+		}
 	}
 }

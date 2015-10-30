@@ -32,7 +32,9 @@ public class RectangularConsoleDisplayer extends AbstractConsoleDisplayer
 		}
 	}
 	
-	public static RectangularConsoleDisplayer randomRectangularConsoleDisplayer(int min, int max) {
+	public static RectangularConsoleDisplayer randomRectangularConsoleDisplayer(ConsoleReader consoleReader) {
+		int min = consoleReader.readNextInt("Minimum " );
+		int max = consoleReader.readNextInt("Maximum " );
 		int height = Random.getRandom(min, max);
 		int width = Random.getRandom(min, max);
 		int nbMines = Random.getRandom(1, height * width / 2);
@@ -44,5 +46,9 @@ public class RectangularConsoleDisplayer extends AbstractConsoleDisplayer
 		int width = consoleReader.readNextInt("Width : ");
 		int nbMines  = consoleReader.readNextInt("Number of mines : ");
 		return new RectangularConsoleDisplayer(height, width, nbMines);
+	}
+	
+	public static RectangularConsoleDisplayer easyRectangularConsoleDisplayer() {
+		return new RectangularConsoleDisplayer(10, 10, 10);
 	}
 }

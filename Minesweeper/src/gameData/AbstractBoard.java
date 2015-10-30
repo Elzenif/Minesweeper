@@ -51,5 +51,26 @@ public abstract class AbstractBoard {
 		return cells.get(index);
 	}
 	
-	protected abstract void fillMines();
+	protected void fillMines() {
+		int nbMinesRemaning = nbMines;
+		double proba = 0;
+		for (int i = length; i >= 1; i--) {
+			proba = (double) nbMinesRemaning / (double) i;
+			if (Random.getRandom(proba)) {
+				nbMinesRemaning--;
+				getCell(i-1).setCellContent(true);
+			}
+			else {
+				getCell(i-1).setCellContent(false);
+			}
+		}
+	}
+	
+	public void revealCell(int index) {
+		cells.get(index).revealCell();
+	}
+	
+	public void flagCell(int index) {
+		cells.get(index).flagCell();
+	}
 }
