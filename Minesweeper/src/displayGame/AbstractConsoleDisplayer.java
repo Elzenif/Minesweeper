@@ -11,4 +11,10 @@ public abstract class AbstractConsoleDisplayer {
 	}
 		
 	public abstract void displayBoard();
+	
+	public void revealAllBoard() {
+		for (int i = 0; i < getBoard().getLength(); i++) {
+			getBoard().revealCell(i);
+		}
+	}
 }
