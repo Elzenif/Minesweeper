@@ -32,13 +32,17 @@ public class RectangularConsoleDisplayer extends AbstractConsoleDisplayer
 		}
 	}
 	
-	public static RectangularConsoleDisplayer randomRectangularConsoleDisplayer(ConsoleReader consoleReader) {
-		int min = consoleReader.readNextInt("Minimum " );
-		int max = consoleReader.readNextInt("Maximum " );
+	public static RectangularConsoleDisplayer randomRectangularConsoleDisplayer(int min, int max) {
 		int height = Random.getRandom(min, max);
 		int width = Random.getRandom(min, max);
 		int nbMines = Random.getRandom(1, height * width / 2);
-		return new RectangularConsoleDisplayer(height, width, nbMines);
+		return new RectangularConsoleDisplayer(height, width, nbMines);		
+	}
+	
+	public static RectangularConsoleDisplayer randomRectangularConsoleDisplayer(ConsoleReader consoleReader) {
+		int min = consoleReader.readNextInt("Minimum " );
+		int max = consoleReader.readNextInt("Maximum " );
+		return randomRectangularConsoleDisplayer(min, max);
 	}
 
 	public static RectangularConsoleDisplayer standardRectangularConsoleDisplayer(ConsoleReader consoleReader) {
