@@ -12,25 +12,14 @@ public abstract class AbstractMineCell extends AbstractCellContent {
 		mineContained = 1;
 	}
 	
+	@Override
+	protected boolean revealCell() {
+		setCellDisplay(new MineCellDisplay(this));
+		return true;
+	}
+	
 	protected AbstractMineCell(AbstractCell cell) {
 		super(cell);
 	}
 	
-	@Override
-	public void print() {
-		switch (cellDisplay) {
-			case NOPE:
-				System.out.print(". ");
-				break;
-			case FLAG:
-				System.out.print("F ");
-				break;
-			case CONTENT:
-				System.out.print("X ");
-				break;
-			default:
-				System.out.print(". ");
-				break;
-		}
-	}
 }

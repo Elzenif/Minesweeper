@@ -16,11 +16,11 @@ public abstract class AbstractCell {
 		return cellContent;
 	}
 		
-	private void setIndex(int index) throws Exception {
+	private void setIndex(int index) throws IllegalArgumentException {
 		if (index < 0)
-			throw new Exception("index too small : " + index);
+			throw new IllegalArgumentException("index too small : " + index);
 		if (index >= board.getLength())
-			throw new Exception("index : " + index + " greater than length : " + board.getLength());
+			throw new IllegalArgumentException("index : " + index + " greater than length : " + board.getLength());
 		this.index = index;
 	}
 	
@@ -32,16 +32,20 @@ public abstract class AbstractCell {
 		try {
 			setBoard(board);
 			setIndex(index);
-		} catch (Exception e) {
+		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	protected void revealCell() {
-		cellContent.setCellDisplay(CellDisplay.CONTENT);
+	/**
+	 * Reveal the cell content
+	 * @return true if it contains a mine
+	 */
+	protected boolean revealCell() {
+		return cellContent.revealCell();
 	}
 	
 	protected void flagCell() {
-		cellContent.setCellDisplay(CellDisplay.FLAG);
+		cellContent.flagCell();
 	}
 }

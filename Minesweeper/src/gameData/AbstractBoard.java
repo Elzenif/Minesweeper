@@ -21,9 +21,9 @@ public abstract class AbstractBoard {
 		return nbMines;
 	}
 
-	private void setLength(int length) throws Exception {
+	private void setLength(int length) throws IllegalArgumentException {
 		if (length <= 0)
-			throw new Exception("length must be strictly positive : " + length);
+			throw new IllegalArgumentException("length must be strictly positive : " + length);
 		this.length = length;
 	}
 	
@@ -31,9 +31,9 @@ public abstract class AbstractBoard {
 		cells = new ArrayList<AbstractCell>(length);
 	}
 	
-	private void setNbMines(int nbMines) throws Exception {
+	private void setNbMines(int nbMines) throws IllegalArgumentException {
 		if (nbMines > length)
-			throw new Exception("there are more mines than cells : " + nbMines);
+			throw new IllegalArgumentException("There are more mines than cells : " + nbMines);
 		this.nbMines = nbMines;
 	}
 	
@@ -66,8 +66,8 @@ public abstract class AbstractBoard {
 		}
 	}
 	
-	public void revealCell(int index) {
-		cells.get(index).revealCell();
+	public boolean revealCell(int index) {
+		return cells.get(index).revealCell();
 	}
 	
 	public void flagCell(int index) {

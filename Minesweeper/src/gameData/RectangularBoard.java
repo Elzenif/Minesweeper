@@ -14,15 +14,15 @@ public class RectangularBoard extends AbstractBoard
 		return width;
 	}
 
-	private void setHeight(int height) throws Exception {
+	private void setHeight(int height) throws IllegalArgumentException {
 		if (height < 2)
-			throw new Exception("height must be 2 or more : " + height);
+			throw new IllegalArgumentException("height must be 2 or more : " + height);
 		this.height = height;
 	}
 
-	private void setWidth(int width) throws Exception {
+	private void setWidth(int width) throws IllegalArgumentException {
 		if (width < 2)
-			throw new Exception("width must be 2 or more : " + width);
+			throw new IllegalArgumentException("width must be 2 or more : " + width);
 		this.width = width;
 	}
 	
@@ -46,7 +46,7 @@ public class RectangularBoard extends AbstractBoard
 			setCells();
 			fillMines();
 			setNeighBours();
-		} catch (Exception e) {
+		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		}
 	}

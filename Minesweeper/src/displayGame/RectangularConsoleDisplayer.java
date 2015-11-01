@@ -26,7 +26,7 @@ public class RectangularConsoleDisplayer extends AbstractConsoleDisplayer
 		for (int i = 0; i < getBoard().getHeight(); i++) {
 			for (int j = 0; j < getBoard().getWidth(); j++) {
 				int index = convertLineAndRowInIndex(i, j, getBoard().getWidth());
-				board.getCell(index).getCellContent().print();
+				board.getCell(index).getCellContent().getCellDisplay().print();
 			}
 			System.out.println("");	
 		}

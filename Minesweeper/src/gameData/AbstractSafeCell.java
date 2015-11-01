@@ -5,7 +5,7 @@ public abstract class AbstractSafeCell extends AbstractCellContent {
 	protected AbstractNeighbours neighbours;
 	protected int numberOfNeighbours;
 	protected int numberOfNeighboursMines;
-
+	
 	@Override
 	protected void setMineContained() {
 		mineContained = 0;
@@ -37,27 +37,15 @@ public abstract class AbstractSafeCell extends AbstractCellContent {
 		numberOfNeighboursMines += nb;
 	}
 	
+	@Override
+	protected boolean revealCell() {
+		setCellDisplay(new SafeCellDisplay(this));
+		return false;
+	}
+	
 	protected AbstractSafeCell(AbstractCell cell) {
 		super(cell);
 		setNumberOfNeighbours(0);
 		setNumberOfNeighboursMines(0);
-	}
-
-	@Override
-	public void print() {
-		switch (cellDisplay) {
-			case NOPE:
-				System.out.print(". ");
-				break;
-			case FLAG:
-				System.out.print("F ");
-				break;
-			case CONTENT:
-				System.out.print(getNumberOfNeighboursMines() + " ");
-				break;
-			default:
-				System.out.print(". ");
-				break;
-		}
 	}
 }

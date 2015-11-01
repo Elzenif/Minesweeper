@@ -1,12 +1,10 @@
 package gameData;
 
-import displayGame.ConsolePrint;
-
-public abstract class AbstractCellContent implements ConsolePrint {
+public abstract class AbstractCellContent {
 
 	protected AbstractCell cell;
 	protected int mineContained;
-	protected CellDisplay cellDisplay;
+	protected AbstractCellDisplay cellDisplay;
 	
 	public abstract AbstractCell getCell();
 
@@ -14,33 +12,35 @@ public abstract class AbstractCellContent implements ConsolePrint {
 		return mineContained;
 	}
 	
-	public boolean isHidden() {
-		return cellDisplay.equals(CellDisplay.NOPE);
+	public AbstractCellDisplay getCellDisplay() {
+		return cellDisplay;
 	}
-	
-	public boolean isRevealed() {
-		return cellDisplay.equals(CellDisplay.CONTENT);
-	}
-	
-	public boolean isFlag() {
-		return cellDisplay.equals(CellDisplay.FLAG);
-	}
-	
+
 	protected void setCell(AbstractCell cell) {
 		this.cell = cell;
 	}
 	
 	protected abstract void setMineContained();
 	
-	protected void setCellDisplay(CellDisplay cellDisplay) {
+	protected void setCellDisplay(AbstractCellDisplay cellDisplay) {
 		this.cellDisplay = cellDisplay;
 	}
+	
+	protected void flagCell() {
+		setCellDisplay(new FlagCellDisplay(this));
+	}
+	
+	/**
+	 * Reveal the cell content
+	 * @return true if it contains a mine
+	 */
+	protected abstract boolean revealCell();
 	
 	public abstract void initializeAnyNeighbour();
 
 	protected AbstractCellContent(AbstractCell cell) {
 		setCell(cell);
 		setMineContained();
-		setCellDisplay(CellDisplay.NOPE);
+		setCellDisplay(new UnknownCellDisplay(this));
 	}
 }
