@@ -1,6 +1,6 @@
 package test;
 
-import displayGame.AbstractConsoleDisplayer;
+import gameDisplay.AbstractConsoleDisplayer;
 
 public abstract class AbstractTestConsoleBoard {
 	

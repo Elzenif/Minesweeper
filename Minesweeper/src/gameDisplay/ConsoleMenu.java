@@ -1,4 +1,4 @@
-package displayGame;
+package gameDisplay;
 
 public class ConsoleMenu {
 

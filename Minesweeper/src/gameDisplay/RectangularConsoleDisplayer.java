@@ -1,4 +1,4 @@
-package displayGame;
+package gameDisplay;
 
 import gameData.IndexConverterRectangular;
 import gameData.Random;

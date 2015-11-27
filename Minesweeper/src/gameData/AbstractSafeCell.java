@@ -40,6 +40,9 @@ public abstract class AbstractSafeCell extends AbstractCellContent {
 	@Override
 	protected boolean revealCell() {
 		setCellDisplay(new SafeCellDisplay(this));
+		if (getNumberOfNeighbours() == 0) {
+			getNeighbours().revealNeighbours();
+		}
 		return false;
 	}
 	

@@ -5,6 +5,7 @@ public abstract class AbstractCell {
 	protected int index;
 	protected AbstractBoard board;
 	protected AbstractCellContent cellContent;
+	protected boolean revealed;
 
 	public int getIndex() {
 		return index;
@@ -14,6 +15,10 @@ public abstract class AbstractCell {
 
 	public AbstractCellContent getCellContent() {
 		return cellContent;
+	}
+	
+	public boolean isRevealed() {
+		return revealed;
 	}
 		
 	private void setIndex(int index) throws IllegalArgumentException {
@@ -27,14 +32,19 @@ public abstract class AbstractCell {
 	protected abstract void setBoard(AbstractBoard board);
 	
 	protected abstract void setCellContent(boolean hasMine);
-
+	
 	protected AbstractCell(AbstractBoard board, int index) {
 		try {
 			setBoard(board);
 			setIndex(index);
+			hideCell();
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	protected void hideCell() {
+		revealed = false;
 	}
 	
 	/**
@@ -42,6 +52,7 @@ public abstract class AbstractCell {
 	 * @return true if it contains a mine
 	 */
 	protected boolean revealCell() {
+		revealed = true;
 		return cellContent.revealCell();
 	}
 	

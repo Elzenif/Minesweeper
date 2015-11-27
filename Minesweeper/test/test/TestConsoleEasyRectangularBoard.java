@@ -1,6 +1,6 @@
 package test;
 
-import displayGame.RectangularConsoleDisplayer;
+import gameDisplay.RectangularConsoleDisplayer;
 
 public class TestConsoleEasyRectangularBoard extends AbstractTestConsoleBoard {
 

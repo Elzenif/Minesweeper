@@ -33,4 +33,12 @@ public abstract class AbstractNeighbours {
 			getSafeCell().incNumberOfNeighboursMines(neighbour.getCellContent().getMineContained());
 		}
 	}
+
+	protected void revealNeighbours() {
+		for (AbstractCell neighbour : neighbours) {
+			if (!neighbour.isRevealed())
+				neighbour.revealCell();
+		}
+	}
+	
 }

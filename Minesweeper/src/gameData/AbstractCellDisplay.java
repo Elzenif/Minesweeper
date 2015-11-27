@@ -1,6 +1,6 @@
 package gameData;
 
-import displayGame.ConsolePrint;
+import gameDisplay.ConsolePrint;
 
 public abstract class AbstractCellDisplay implements ConsolePrint {
 
