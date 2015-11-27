@@ -56,8 +56,8 @@ public class RectangularBoard extends AbstractBoard
 		return (RectangularCell) getCells().get(index);
 	}
 		
-	public void revealCell(int line, int row) {
-		super.revealCell(convertLineAndRowInIndex(line, row, width));
+	public boolean revealCell(int line, int row) {
+		return super.revealCell(convertLineAndRowInIndex(line, row, width));
 	}
 	
 	public void flagCell(int line, int row) {

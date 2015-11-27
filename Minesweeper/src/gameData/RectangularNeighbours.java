@@ -42,7 +42,4 @@ public class RectangularNeighbours extends AbstractNeighbours implements IndexCo
 		super(safeCell);
 		setRectangularNeighbours();
 	}
-	
-
-	
 }

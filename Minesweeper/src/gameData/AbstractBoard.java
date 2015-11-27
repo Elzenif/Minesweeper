@@ -42,7 +42,7 @@ public abstract class AbstractBoard {
 			setLength(length);
 			setCells();
 			setNbMines(nbMines);
-		} catch (Exception e) {
+		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		}
 	}
