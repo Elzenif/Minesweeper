@@ -2,7 +2,7 @@ package gameInterface;
 
 import java.util.Scanner;
 
-public class ConsoleReader extends AbstractReader {
+public class ConsoleReader {
 
 	private Scanner scanner;
 	
@@ -11,7 +11,6 @@ public class ConsoleReader extends AbstractReader {
 	}
 	
 	public ConsoleReader() {
-		super();
 		setScanner();
 	}
 	

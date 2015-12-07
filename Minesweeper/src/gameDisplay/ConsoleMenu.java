@@ -25,13 +25,13 @@ public class ConsoleMenu {
 		if (consoleDisplayer != null) {
 			consoleDisplayer.displayBoard();
 		} else {
-			System.out.println("Erreur: consoleDisplayer is null");
+			
 		}
 	}
 	
 	private AbstractConsoleDisplayer selectLevel() {		
 		AbstractConsoleDisplayer consoleDisplayer = null;
-		ConsoleReader consoleReader = consoleInterface.getReader();
+		ConsoleReader consoleReader = consoleInterface.getConsoleReader();
 		String message = "";
 		message += "Which type of Minesweeper would you like to play ?\n";
 		message += "1. Rectangular\n";
