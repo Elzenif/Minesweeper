@@ -1,19 +1,22 @@
 package gameDisplay;
 
+import gameInterface.ConsoleInterface;
+import gameInterface.ConsoleReader;
+
 public class ConsoleMenu {
 
-	private ConsoleReader consoleReader;
+	private ConsoleInterface consoleInterface;
 
-	public ConsoleReader getConsoleReader() {
-		return consoleReader;
+	public ConsoleInterface getConsoleInterface() {
+		return consoleInterface;
 	}
-
-	private void setConsoleReader() {
-		consoleReader = new ConsoleReader();
+	
+	private void setConsoleInterface() {
+		consoleInterface = new ConsoleInterface();
 	}
-
+	
 	public ConsoleMenu() {
-		setConsoleReader();
+		setConsoleInterface();
 	}
 	
 	public void start() {
@@ -28,7 +31,7 @@ public class ConsoleMenu {
 	
 	private AbstractConsoleDisplayer selectLevel() {		
 		AbstractConsoleDisplayer consoleDisplayer = null;
-
+		ConsoleReader consoleReader = consoleInterface.getConsoleReader();
 		String message = "";
 		message += "Which type of Minesweeper would you like to play ?\n";
 		message += "1. Rectangular\n";

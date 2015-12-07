@@ -1,4 +1,4 @@
-package gameDisplay;
+package gameInterface;
 
 import java.util.Scanner;
 

@@ -3,6 +3,7 @@ package gameDisplay;
 import gameData.IndexConverterRectangular;
 import gameData.Random;
 import gameData.RectangularBoard;
+import gameInterface.ConsoleReader;
 
 public class RectangularConsoleDisplayer extends AbstractConsoleDisplayer 
 	implements IndexConverterRectangular, Random {
