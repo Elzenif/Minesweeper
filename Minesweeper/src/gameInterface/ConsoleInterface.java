@@ -1,18 +1,18 @@
 package gameInterface;
 
-public class ConsoleInterface {
+public class ConsoleInterface extends AbstractInterface {
 
-	private ConsoleReader consoleReader;
-
-	public ConsoleReader getConsoleReader() {
-		return consoleReader;
+	@Override
+	public ConsoleReader getReader() {
+		return (ConsoleReader) reader;
 	}
 
 	private void setConsoleReader() {
-		consoleReader = new ConsoleReader();
+		reader = new ConsoleReader();
 	}
 
 	public ConsoleInterface() {
+		super();
 		setConsoleReader();
 	}
 
