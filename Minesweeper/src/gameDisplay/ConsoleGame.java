@@ -1,10 +1,12 @@
 package gameDisplay;
 
+import gameLoop.ConsoleGameLoop;
+
 public class ConsoleGame {
 
 	public static void main(String[] args) {
 		
-		ConsoleMenu menu = new ConsoleMenu();
-		menu.start();
+		ConsoleGameLoop gameLoop = new ConsoleGameLoop();
+		gameLoop.loop();
 	}
 }

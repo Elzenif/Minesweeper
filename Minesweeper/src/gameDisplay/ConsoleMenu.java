@@ -19,17 +19,11 @@ public class ConsoleMenu {
 		setConsoleInterface();
 	}
 	
-	public void start() {
+	public void intro() {
 		System.out.println("--- Welcome to Mineweeper ---");
-		AbstractConsoleDisplayer consoleDisplayer = selectLevel();
-		if (consoleDisplayer != null) {
-			consoleDisplayer.displayBoard();
-		} else {
-			
-		}
 	}
 	
-	private AbstractConsoleDisplayer selectLevel() {		
+	public AbstractConsoleDisplayer selectLevel() {		
 		AbstractConsoleDisplayer consoleDisplayer = null;
 		ConsoleReader consoleReader = consoleInterface.getConsoleReader();
 		String message = "";
